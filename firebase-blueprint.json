@@ -1,0 +1,87 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "A user in the platform",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "role": { "type": "string" }
+      },
+      "required": ["uid", "email", "role"]
+    },
+    "JobPost": {
+      "title": "JobPost",
+      "description": "A job post for scripting or building",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "budget": { "type": "number" },
+        "type": { "type": "string" },
+        "status": { "type": "string" },
+        "authorId": { "type": "string" }
+      },
+      "required": ["id", "title", "description", "type", "status", "authorId"]
+    },
+    "Application": {
+      "title": "Application",
+      "description": "An application for a job post",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "jobId": { "type": "string" },
+        "applicantName": { "type": "string" },
+        "proposal": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["id", "jobId", "applicantName", "proposal", "status"]
+    },
+    "Chat": {
+      "title": "Chat",
+      "description": "A chat thread",
+      "type": "object",
+      "properties": {
+        "participants": { "type": "array" },
+        "jobId": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["participants", "updatedAt"]
+    },
+    "ChatMessage": {
+      "title": "ChatMessage",
+      "description": "A message in a chat",
+      "type": "object",
+      "properties": {
+        "senderId": { "type": "string" },
+        "text": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["senderId", "text", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "/jobPosts/{postId}": {
+      "schema": "JobPost",
+      "description": "Job postings"
+    },
+    "/applications/{appId}": {
+      "schema": "Application",
+      "description": "Job applications"
+    },
+    "/chats/{chatId}": {
+      "schema": "Chat",
+      "description": "Chat threads"
+    },
+    "/chats/{chatId}/messages/{messageId}": {
+      "schema": "ChatMessage",
+      "description": "Chat messages"
+    }
+  }
+}
