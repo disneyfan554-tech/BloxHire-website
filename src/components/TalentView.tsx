@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { BadgeCheck } from 'lucide-react';
+import RobloxAvatar from './RobloxAvatar';
 
 export default function TalentView() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -25,7 +26,7 @@ export default function TalentView() {
           {talents.filter(t => t.name.toLowerCase().includes(searchTerm.toLowerCase()) || t.skills.some(s => s.toLowerCase().includes(searchTerm.toLowerCase()))).map((talent, i) => (
           <div key={i} className="p-6 bg-[#16181D] border border-slate-700 rounded-3xl flex flex-col gap-4">
             <div className="flex items-center gap-4">
-              <div className="w-16 h-16 rounded-2xl bg-slate-800" />
+              <RobloxAvatar username={talent.name} />
               <div>
                 <h3 className="text-xl font-bold flex items-center gap-1">
                     {talent.name}
